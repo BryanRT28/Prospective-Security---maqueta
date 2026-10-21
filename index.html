@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <title>Prospective Security Consultores | Prospectiva Técnica &amp; Seguridad Integral</title>
+    
+    <!-- Script preventivo anti-parpadeo (FOUC) al cargar tema -->
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
+    <!-- Tailwind CSS CDN configurado con modo de clase -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ps: {
+                            petrol: "#0E4D48",
+                            petrolDark: "#092F2C",
+                            petrolLight: "#166B64",
+                            petrolSoft: "#EDF5F4",
+                            gold: "#F5B700",
+                            goldHover: "#E0A700",
+                            dark: "#081615",
+                            cardDark: "#0C2322",
+                            borderDark: "rgba(22, 107, 100, 0.35)",
+                            borderLight: "rgba(14, 77, 72, 0.16)",
+                            mutedDark: "#8FA8A6",
+                            mutedLight: "#586765"
+                        }
+                    },
+                    fontFamily: {
+                        mono: ["'Space Grotesk'", "monospace"],
+                        sans: ["'Plus Jakarta Sans'", "sans-serif"]
+                    },
+                    keyframes: {
+                        radarPulse: {
+                            '0%': { transform: 'scale(0.95)', opacity: '0.8' },
+                            '50%': { transform: 'scale(1.05)', opacity: '0.4' },
+                            '100%': { transform: 'scale(0.95)', opacity: '0.8' }
+                        }
+                    },
+                    animation: {
+                        'radar-pulse': 'radarPulse 4s ease-in-out infinite'
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        *, *::before, *::after {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            overflow-x: clip;
+            width: 100%;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Cuadrícula táctica adaptativa */
+        .grid-tactical {
+            background-size: 32px 32px, 64px 64px, 64px 64px;
+        }
+        .dark .grid-tactical {
+            background-image: radial-gradient(rgba(245, 183, 0, 0.08) 1px, transparent 1px),
+                              linear-gradient(to right, rgba(22, 107, 100, 0.07) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(22, 107, 100, 0.07) 1px, transparent 1px);
+        }
+        html:not(.dark) .grid-tactical {
+            background-image: radial-gradient(rgba(14, 77, 72, 0.08) 1px, transparent 1px),
+                              linear-gradient(to right, rgba(14, 77, 72, 0.04) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(14, 77, 72, 0.04) 1px, transparent 1px);
+        }
+
+        /* Placeholder Estético */
+        .img-editorial {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', monospace;
+            width: 100%;
+            height: 100%;
+            transition: all 0.4s ease;
+        }
+        .dark .img-editorial {
+            background: #0B2220;
+            border: 1px dashed rgba(245, 183, 0, 0.4);
+            color: #F5B700;
+        }
+        html:not(.dark) .img-editorial {
+            background: #EAF1F0;
+            border: 1px dashed rgba(14, 77, 72, 0.35);
+            color: #0E4D48;
+        }
+
+        /* Botón Dorado */
+        .btn-gold {
+            background: linear-gradient(135deg, #F5B700 0%, #DDA400 100%);
+            color: #081615;
+            font-family: 'Space Grotesk', monospace;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(245, 183, 0, 0.45);
+        }
+
+        /* Tarjeta adaptativa */
+        .tactical-card {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s ease, 
+                        box-shadow 0.4s ease,
+                        background-color 0.3s ease;
+        }
+        .dark .tactical-card {
+            background-color: #0C2322;
+            border: 1px solid rgba(22, 107, 100, 0.4);
+        }
+        .dark .tactical-card:hover {
+            transform: translateY(-8px);
+            border-color: #F5B700;
+            box-shadow: 0 20px 40px -15px rgba(14, 77, 72, 0.7);
+        }
+        html:not(.dark) .tactical-card {
+            background-color: #FFFFFF;
+            border: 1px solid rgba(14, 77, 72, 0.16);
+        }
+        html:not(.dark) .tactical-card:hover {
+            transform: translateY(-8px);
+            border-color: #0E4D48;
+            box-shadow: 0 20px 40px -15px rgba(14, 77, 72, 0.18);
+        }
+
+        /* Subrayado de navegación */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #F5B700;
+            transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .dark .nav-scrolled {
+            background-color: rgba(8, 22, 21, 0.95) !important;
+            border-bottom-color: rgba(245, 183, 0, 0.3) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+        html:not(.dark) .nav-scrolled {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            border-bottom-color: rgba(14, 77, 72, 0.18) !important;
+            box-shadow: 0 4px 20px rgba(14, 77, 72, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-[#F8FAFA] dark:bg-ps-dark text-[#0F201E] dark:text-[#E2ECEB] font-sans antialiased selection:bg-ps-gold selection:text-black grid-tactical">
+
+    <!-- ================= 1. NAVEGACIÓN FLOTANTE ================= -->
+    <header id="main-header" class="fixed top-0 inset-x-0 z-50 bg-white/90 dark:bg-ps-dark/85 backdrop-blur-md border-b border-ps-borderLight dark:border-ps-borderDark transition-all duration-500 w-full">
+        <div class="w-full px-5 sm:px-8 lg:px-14 h-20 lg:h-24 flex items-center justify-between gap-4">
+            
+            <!-- Logo Oficial Prospective Security -->
+            <a class="flex items-center shrink-0 group py-1" href="#inicio">
+                <div class="relative h-12 sm:h-14 lg:h-16 w-auto flex items-center">
+                    <img alt="Prospective Security Consultores" 
+                         src="img/logo.png" 
+                         class="h-full w-auto object-contain max-h-12 sm:max-h-14 lg:max-h-16 transition-transform duration-300 group-hover:scale-[1.02]" 
+                         onload="this.classList.remove('hidden'); this.nextElementSibling?.classList.add('hidden');" />
+
+                    <div class="h-12 sm:h-14 lg:h-16 px-4 border border-dashed border-ps-petrol dark:border-ps-gold/50 rounded flex items-center justify-center text-ps-petrol dark:text-ps-gold font-mono text-xs uppercase tracking-wider bg-ps-petrolSoft dark:bg-transparent">
+                        [ Poner Logo Aquí ]
+                    </div>
+                </div>
+            </a>
+
+            <!-- Menú Principal -->
+            <nav class="hidden xl:flex items-center space-x-7 text-xs uppercase tracking-wider font-mono font-semibold text-[#0F201E] dark:text-zinc-300">
+                <a class="nav-link hover:text-ps-gold py-1" href="#prospectiva">Prospectiva Técnica</a>
+                <a class="nav-link hover:text-ps-gold py-1" href="#servicios-operativos">Operaciones</a>
+                <a class="nav-link hover:text-ps-gold py-1" href="#conflictos">Gestión de Conflictos</a>
+                <a class="nav-link hover:text-ps-gold py-1" href="#consultoria">Consultoría</a>
+                <a class="nav-link hover:text-ps-gold py-1" href="#especialistas">Liderazgo</a>
+                <a class="nav-link hover:text-ps-gold py-1" href="#contacto">Contacto</a>
+            </nav>
+
+            <!-- Acciones Rápidas & Switch de Tema -->
+            <div class="flex items-center gap-3 shrink-0">
+                
+                <!-- BOTÓN SWITCH OSCURO / CLARO -->
+                <button id="theme-toggle" class="p-2.5 rounded-lg border border-ps-borderLight dark:border-ps-borderDark bg-ps-petrolSoft dark:bg-ps-cardDark text-ps-petrol dark:text-ps-gold hover:scale-105 transition-all focus:outline-none" aria-label="Cambiar tema de color">
+                    <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-sm hidden"></i>
+                    <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-sm hidden"></i>
+                </button>
+
+                <a class="hidden sm:inline-flex items-center gap-2 btn-gold px-5 py-3 rounded-lg text-xs uppercase tracking-wider shadow-md" 
+                   href="https://wa.me/51984399078?text=Estimados%20Prospective%20Security,%20solicito%20coordinar%20una%20reuni%C3%B3n%20t%C3%A9cnica%20de%20consultor%C3%ADa" 
+                   target="_blank">
+                    <i class="fa-solid fa-headset text-sm"></i>
+                    <span>Consulta Técnica</span>
+                </a>
+
+                <button id="nav-toggle" class="xl:hidden text-ps-petrol dark:text-ps-gold text-2xl p-2 focus:outline-none transition-transform active:scale-95" aria-label="Abrir Menú">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="nav-menu" class="hidden xl:hidden bg-white/98 dark:bg-ps-dark/98 border-b border-ps-borderLight dark:border-ps-borderDark px-6 py-6 space-y-3 font-mono text-xs uppercase tracking-wider font-semibold">
+            <a class="block py-2 text-[#0F201E] dark:text-zinc-300 hover:text-ps-gold border-b border-slate-200 dark:border-white/5" href="#prospectiva">Prospectiva Técnica y Escenarios</a>
+            <a class="block py-2 text-[#0F201E] dark:text-zinc-300 hover:text-ps-gold border-b border-slate-200 dark:border-white/5" href="#servicios-operativos">Servicios Operativos de Protección</a>
+            <a class="block py-2 text-ps-petrol dark:text-ps-gold border-b border-slate-200 dark:border-white/5" href="#conflictos">Prevención de Conflictos Mineros &amp; Sociales</a>
+            <a class="block py-2 text-[#0F201E] dark:text-zinc-300 hover:text-ps-gold border-b border-slate-200 dark:border-white/5" href="#consultoria">Auditorías, Ciberseguridad &amp; Crisis</a>
+            <a class="block py-2 text-[#0F201E] dark:text-zinc-300 hover:text-ps-gold border-b border-slate-200 dark:border-white/5" href="#especialistas">Oficiales Especialistas PNP (r)</a>
+            <a class="block py-2 text-[#0F201E] dark:text-zinc-300 hover:text-ps-gold border-b border-slate-200 dark:border-white/5" href="#contacto">Sede Cusco &amp; Canales</a>
+            <a class="block text-center py-3.5 btn-gold rounded-lg uppercase mt-4 text-xs font-bold" 
+               href="https://wa.me/51984399078" target="_blank">
+                Línea Directa: 984 399 078
+            </a>
+        </div>
+    </header>
+
+<!-- ================= 2. HERO SECTION (SOLO EL PÁRRAFO ESTRECHO) ================= -->
+    <section id="inicio" class="relative min-h-[90vh] flex items-center pt-28 lg:pt-20 pb-16 w-full overflow-hidden border-b border-ps-borderLight dark:border-ps-borderDark bg-[#F8FAFA] dark:bg-ps-dark transition-colors duration-300 select-none">
+        
+        <!-- GALERÍA DE FONDO PANORÁMICA (SOPORTA DEDO Y MOUSE) -->
+        <div id="hero-slider-area" class="absolute inset-0 z-0 overflow-hidden cursor-grab active:cursor-grabbing touch-pan-y">
+            
+            <!-- Slide 1: Sala de Estrategia y Alta Dirección -->
+            <div class="hero-slide absolute inset-0 opacity-100 transition-opacity duration-700 ease-in-out pointer-events-none">
+                <img alt="Sesión Estratégica de Directorio" 
+                     class="w-full h-full object-cover object-[78%_center] lg:object-right filter contrast-105 brightness-95 dark:brightness-[0.75] transition-transform duration-[6000ms] ease-out" 
+                     src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=2000&q=80" />
+            </div>
+
+            <!-- Slide 2: Centro de Monitoreo e Inteligencia Táctica -->
+            <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none">
+                <img alt="Centro de Monitoreo y Ciberseguridad" 
+                     class="w-full h-full object-cover object-[75%_center] lg:object-right filter contrast-105 brightness-95 dark:brightness-[0.75] transition-transform duration-[6000ms] ease-out" 
+                     src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=2000&q=80" />
+            </div>
+
+            <!-- Slide 3: Mesa de Diálogo y Negociación Territorial -->
+            <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none">
+                <img alt="Gestión de Conflictos y Diálogo Estratégico" 
+                     class="w-full h-full object-cover object-[72%_center] lg:object-right filter contrast-105 brightness-95 dark:brightness-[0.75] transition-transform duration-[6000ms] ease-out" 
+                     src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=2000&q=80" />
+            </div>
+
+            <!-- Desvanecido horizontal -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#F8FAFA] via-[#F8FAFA]/95 sm:via-[#F8FAFA]/85 lg:via-[#F8FAFA]/70 to-transparent dark:from-ps-dark dark:via-ps-dark/95 sm:dark:via-ps-dark/85 lg:dark:via-ps-dark/70 to-transparent pointer-events-none z-10"></div>
+            
+            <!-- Fusión vertical superior e inferior -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#F8FAFA]/80 via-transparent to-[#F8FAFA] dark:from-ps-dark/80 dark:via-transparent dark:to-ps-dark pointer-events-none z-10"></div>
+        </div>
+
+        <div class="w-full px-5 sm:px-8 lg:px-14 relative z-20 pointer-events-none">
+            <!-- Todo el contenedor recupera su ancho y margen normal -->
+            <div class="max-w-2xl lg:max-w-3xl space-y-6 sm:space-y-7 pointer-events-auto" data-aos="fade-right" data-aos-duration="850">
+                
+                <!-- 1. Micro-Badge de Reputación con Estrellas (Ancho normal) -->
+                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white dark:bg-ps-cardDark border border-ps-borderLight dark:border-ps-borderDark shadow-sm font-mono text-xs w-fit">
+                    <div class="flex text-ps-gold text-[11px] gap-0.5">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <span class="text-slate-300 dark:text-zinc-600">|</span>
+                    <span class="text-ps-petrol dark:text-ps-gold font-bold tracking-wider uppercase text-[11px]">
+                        +30 Años de Trayectoria PNP
+                    </span>
+                </div>
+
+                <!-- 2. Titular Principal (En 3 líneas sin cortar "SEGURIDAD INTEGRAL") -->
+                <h1 class="font-mono text-3xl sm:text-5xl lg:text-[58px] xl:text-[64px] font-bold leading-[1.05] text-ps-dark dark:text-white tracking-tight uppercase">
+                    ALTA DIRECCIÓN <span class="text-ps-gold">—</span> <br/>
+                    PROSPECTIVA &amp; <br/>
+                    <span class="text-ps-petrol dark:text-ps-gold">
+                        SEGURIDAD INTEGRAL
+                    </span>
+                </h1>
+
+                <!-- 3. ÚNICAMENTE ESTE TEXTO ES ESTRECHO Y PEGADO A LA IZQUIERDA -->
+                <p class="text-xs sm:text-base text-ps-mutedLight dark:text-zinc-300 font-sans font-normal leading-relaxed max-w-[260px] sm:max-w-md">
+                    Consultoría estratégica y peritajes de inteligencia para la prevención de conflictos sociales, mitigación de riesgos de alto impacto, investigaciones corporativas y ciberdefensa.
+                </p>
+
+                <!-- 4. Botonera Apilada en Móvil (Tamaño original) -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3.5 sm:gap-5 pt-2">
+                    
+                    <a href="https://wa.me/51984399078?text=Hola%20Prospective%20Security,%20deseo%20agendar%20una%20reuni%C3%B3n%20de%20consultor%C3%ADa" 
+                       target="_blank" 
+                       class="w-fit inline-flex items-center gap-3 bg-ps-petrol dark:bg-ps-gold hover:bg-ps-petrolLight dark:hover:bg-ps-goldHover text-white dark:text-black font-mono font-bold text-xs uppercase tracking-wider pl-6 pr-2 py-2 rounded-full shadow-lg transition-all hover:scale-105 group">
+                        <span>Agendar Consultoría</span>
+                        <div class="w-8 h-8 rounded-full bg-white/20 dark:bg-black/20 flex items-center justify-center text-white dark:text-black text-xs transition-transform group-hover:translate-x-0.5">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </a>
+
+                    <a href="tel:+51984399078" 
+                       class="w-fit inline-flex items-center gap-3 bg-white dark:bg-ps-cardDark hover:bg-slate-100 dark:hover:bg-ps-petrolDark border border-ps-borderLight dark:border-ps-borderDark pl-2 pr-5 py-2 rounded-full font-mono text-xs font-bold text-ps-dark dark:text-white transition-all shadow-sm">
+                        <div class="w-8 h-8 rounded-full bg-ps-petrol/10 dark:bg-ps-gold/20 text-ps-petrol dark:text-ps-gold flex items-center justify-center text-xs">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="text-left leading-none">
+                            <span class="text-[9px] uppercase tracking-wider text-ps-mutedLight dark:text-zinc-400 block mb-0.5">Línea Directa</span>
+                            <span class="text-xs font-bold">984 399 078</span>
+                        </div>
+                    </a>
+
+                </div>
+
+                <!-- 5. Métricas de Respaldo (Ancho amplio original) -->
+                <div class="pt-6 border-t border-ps-borderLight dark:border-ps-borderDark grid grid-cols-3 gap-4 max-w-lg text-xs font-mono">
+                    <div>
+                        <span class="text-xl sm:text-2xl font-bold text-ps-petrol dark:text-ps-gold block">03 Crls.</span>
+                        <span class="text-[11px] text-ps-mutedLight dark:text-zinc-400 block mt-0.5">Oficiales PNP (r)</span>
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-bold text-ps-dark dark:text-white block">Delphi</span>
+                        <span class="text-[11px] text-ps-mutedLight dark:text-zinc-400 block mt-0.5">Prospectiva Técnica</span>
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-bold text-ps-petrol dark:text-ps-gold block">Nacional</span>
+                        <span class="text-[11px] text-ps-mutedLight dark:text-zinc-400 block mt-0.5">Cusco &amp; Cobertura</span>
+                    </div>
+                </div>
+
+                <!-- Indicadores minimalistas de la galería -->
+                <div class="flex items-center gap-2 pt-1">
+                    <button onclick="goToHeroSlide(0)" class="hero-dot w-6 h-1 rounded-full bg-ps-petrol dark:bg-ps-gold transition-all duration-300" aria-label="Slide 1"></button>
+                    <button onclick="goToHeroSlide(1)" class="hero-dot w-2 h-1 rounded-full bg-slate-300 dark:bg-white/20 transition-all duration-300" aria-label="Slide 2"></button>
+                    <button onclick="goToHeroSlide(2)" class="hero-dot w-2 h-1 rounded-full bg-slate-300 dark:bg-white/20 transition-all duration-300" aria-label="Slide 3"></button>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ================= 3. FUNDAMENTOS DE LA PROSPECTIVA TÉCNICA ================= -->
+    <section class="py-24 bg-ps-surface dark:bg-ps-petrolDark/50 border-b border-ps-borderLight dark:border-ps-borderDark w-full relative" id="prospectiva">
+        <div class="w-full px-5 sm:px-8 lg:px-14">
+            
+            <div class="max-w-3xl mb-16 space-y-3" data-aos="fade-up">
+                <span class="text-xs uppercase font-mono tracking-[0.3em] text-ps-petrol dark:text-ps-gold font-bold block">
+                    Fundamento Estratégico
+                </span>
+                <h2 class="font-mono text-3xl sm:text-5xl font-bold text-ps-dark dark:text-white leading-tight">
+                    No Predecimos el Futuro: <br/>
+                    <span class="text-ps-petrol dark:text-ps-gold">Anticipamos Escenarios Críticos.</span>
+                </h2>
+                <p class="text-sm text-ps-mutedLight dark:text-zinc-300 font-light leading-relaxed pt-1">
+                    La prospectiva técnica es una disciplina orientada a la gestión del conocimiento tecnológico y social para reducir la incertidumbre en la toma de decisiones estratégicas ante eventos disruptivos.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="tactical-card p-6 rounded-xl space-y-3 group cursor-default shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 rounded-lg bg-ps-petrolSoft dark:bg-ps-petrol/70 border border-ps-borderLight dark:border-ps-borderDark flex items-center justify-center text-ps-petrol dark:text-ps-gold text-xl group-hover:bg-ps-petrol dark:group-hover:bg-ps-gold group-hover:text-white dark:group-hover:text-black transition-all duration-300">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="font-mono text-lg font-bold text-ps-dark dark:text-white uppercase group-hover:text-ps-petrol dark:group-hover:text-ps-gold transition-colors">
+                        Análisis de Tendencias
+                    </h3>
+                    <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed">
+                        Identificación temprana de variables tecnológicas, regulatorias y sociales que alteran los ecosistemas productivos.
+                    </p>
+                </div>
+
+                <div class="tactical-card p-6 rounded-xl space-y-3 group cursor-default shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 rounded-lg bg-ps-petrolSoft dark:bg-ps-petrol/70 border border-ps-borderLight dark:border-ps-borderDark flex items-center justify-center text-ps-petrol dark:text-ps-gold text-xl group-hover:bg-ps-petrol dark:group-hover:bg-ps-gold group-hover:text-white dark:group-hover:text-black transition-all duration-300">
+                        <i class="fa-solid fa-chess"></i>
+                    </div>
+                    <h3 class="font-mono text-lg font-bold text-ps-dark dark:text-white uppercase group-hover:text-ps-petrol dark:group-hover:text-ps-gold transition-colors">
+                        Construcción de Escenarios
+                    </h3>
+                    <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed">
+                        Modelado de hipótesis futuras ante criminalidad organizada, conflictividad política y bloqueos operativos.
+                    </p>
+                </div>
+
+                <div class="tactical-card p-6 rounded-xl space-y-3 group cursor-default shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 rounded-lg bg-ps-petrolSoft dark:bg-ps-petrol/70 border border-ps-borderLight dark:border-ps-borderDark flex items-center justify-center text-ps-petrol dark:text-ps-gold text-xl group-hover:bg-ps-petrol dark:group-hover:bg-ps-gold group-hover:text-white dark:group-hover:text-black transition-all duration-300">
+                        <i class="fa-solid fa-users-gear"></i>
+                    </div>
+                    <h3 class="font-mono text-lg font-bold text-ps-dark dark:text-white uppercase group-hover:text-ps-petrol dark:group-hover:text-ps-gold transition-colors">
+                        Método Delphi &amp; Vigilancia
+                    </h3>
+                    <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed">
+                        Consultas a paneles de expertos en seguridad y vigilancia tecnológica para la evaluación cuantitativa de vulnerabilidades.
+                    </p>
+                </div>
+
+                <div class="tactical-card p-6 rounded-xl space-y-3 group cursor-default shadow-sm" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-12 h-12 rounded-lg bg-ps-petrolSoft dark:bg-ps-petrol/70 border border-ps-borderLight dark:border-ps-borderDark flex items-center justify-center text-ps-petrol dark:text-ps-gold text-xl group-hover:bg-ps-petrol dark:group-hover:bg-ps-gold group-hover:text-white dark:group-hover:text-black transition-all duration-300">
+                        <i class="fa-solid fa-crosshairs"></i>
+                    </div>
+                    <h3 class="font-mono text-lg font-bold text-ps-dark dark:text-white uppercase group-hover:text-ps-petrol dark:group-hover:text-ps-gold transition-colors">
+                        Reducción de Incertidumbre
+                    </h3>
+                    <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed">
+                        Soporte analítico de alto nivel para blindar inversiones mineras, energéticas e infraestructura crítica pública y privada.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= 4. SERVICIOS OPERATIVOS TÁCTICOS ================= -->
+    <section class="py-24 bg-white dark:bg-ps-dark border-b border-ps-borderLight dark:border-ps-borderDark w-full" id="servicios-operativos">
+        <div class="w-full px-5 sm:px-8 lg:px-14">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6" data-aos="fade-up">
+                <div>
+                    <span class="text-xs uppercase font-mono tracking-[0.3em] text-ps-petrol dark:text-ps-gold font-bold block">
+                        Despliegue en Terreno
+                    </span>
+                    <h2 class="font-mono text-3xl sm:text-5xl font-bold text-ps-dark dark:text-white mt-1">
+                        Servicios Operativos
+                    </h2>
+                </div>
+                <p class="text-xs sm:text-sm text-ps-mutedLight dark:text-zinc-400 font-light max-w-md">
+                    Operaciones de protección ejecutiva, contrainteligencia de planta, seguridad para megaeventos e investigaciones internas.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Operación 1 -->
+                <div class="tactical-card rounded-2xl overflow-hidden flex flex-col justify-between group shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="aspect-[16/10] w-full overflow-hidden relative bg-ps-surface dark:bg-ps-cardDark">
+                            <img alt="Protección VIP y Mega Eventos" 
+                                 class="w-full h-full object-cover hidden" 
+                                 src="img/operativo-1.jpg" 
+                                 onload="this.classList.remove('hidden'); this.nextElementSibling?.classList.add('hidden');" />
+                            <div class="img-editorial"><span>Imagen</span></div>
+                            <div class="absolute top-3 left-3 bg-white/95 dark:bg-ps-dark/90 border border-ps-borderLight dark:border-ps-gold/40 px-3 py-1 rounded text-[10px] font-mono text-ps-petrol dark:text-ps-gold uppercase font-bold">
+                                Protección Ejecutiva
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-mono text-xl font-bold text-ps-dark dark:text-white group-hover:text-ps-petrol dark:group-hover:text-ps-gold transition-colors">
+                                Protección V.I.P. &amp; Mega Eventos
+                            </h3>
+                            <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed font-light">
+                                Evaluación y monitoreo de sistemas de seguridad para dignatarios, directores corporativos, personalidades de alto perfil y eventos multitudinarios con planes de contingencia.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-ps-borderLight dark:border-ps-borderDark mt-4 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-ps-mutedLight dark:text-zinc-400">Escoltas &bull; Rutas Seguras</span>
+                        <a href="https://wa.me/51984399078?text=Hola,%20deseo%20cotizar%20el%20servicio%20de%20Protecci%C3%B3n%20VIP" target="_blank" class="text-ps-petrol dark:text-ps-gold hover:underline font-mono text-xs font-semibold uppercase flex items-center gap-1.5 transition-colors">
+                            <span>Solicitar</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Operación 2 -->
+                <div class="tactical-card rounded-2xl overflow-hidden flex flex-col justify-between group shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="aspect-[16/10] w-full overflow-hidden relative bg-ps-surface dark:bg-ps-cardDark">
+                            <img alt="Investigaciones Privadas e Inteligencia" 
+                                 class="w-full h-full object-cover hidden" 
+                                 src="img/operativo-2.jpg" 
+                                 onload="this.classList.remove('hidden'); this.nextElementSibling?.classList.add('hidden');" />
+                            <div class="img-editorial"><span>Imagen</span></div>
+                            <div class="absolute top-3 left-3 bg-white/95 dark:bg-ps-dark/90 border border-ps-borderLight dark:border-ps-gold/40 px-3 py-1 rounded text-[10px] font-mono text-ps-petrol dark:text-ps-gold uppercase font-bold">
+                                Inteligencia Privada
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-mono text-xl font-bold text-ps-dark dark:text-white group-hover:text-ps-petrol dark:group-hover:text-ps-gold transition-colors">
+                                Investigaciones e Infracciones Internas
+                            </h3>
+                            <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed font-light">
+                                Investigaciones técnicas ante pérdidas sistemáticas, sabotajes industriales, delitos laborales e infiltración de redes de delincuencia común o crimen organizado.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-ps-borderLight dark:border-ps-borderDark mt-4 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-ps-mutedLight dark:text-zinc-400">Peritajes &bull; Diligencias</span>
+                        <a href="https://wa.me/51984399078?text=Hola,%20requiero%20apoyo%20en%20Investigaciones%20Privadas" target="_blank" class="text-ps-petrol dark:text-ps-gold hover:underline font-mono text-xs font-semibold uppercase flex items-center gap-1.5 transition-colors">
+                            <span>Solicitar</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Operación 3 -->
+                <div class="tactical-card rounded-2xl overflow-hidden flex flex-col justify-between group shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <div class="aspect-[16/10] w-full overflow-hidden relative bg-ps-surface dark:bg-ps-cardDark">
+                            <img alt="Vigilancia Electrónica y Ciberseguridad" 
+                                 class="w-full h-full object-cover hidden" 
+                                 src="img/operativo-3.jpg" 
+                                 onload="this.classList.remove('hidden'); this.nextElementSibling?.classList.add('hidden');" />
+                            <div class="img-editorial"><span>Imagen</span></div>
+                            <div class="absolute top-3 left-3 bg-white/95 dark:bg-ps-dark/90 border border-ps-borderLight dark:border-ps-gold/40 px-3 py-1 rounded text-[10px] font-mono text-ps-petrol dark:text-ps-gold uppercase font-bold">
+                                Ciberseguridad &bull; CCTV
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-mono text-xl font-bold text-ps-dark dark:text-white group-hover:text-ps-petrol dark:group-hover:text-ps-gold transition-colors">
+                                Vigilancia Tecnológica &amp; Ciberseguridad
+                            </h3>
+                            <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed font-light">
+                                Implementación de soluciones integrales: analítica de video, control perimétrico de instalaciones críticas, blindaje de servidores y protocolos de ciberdefensa.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-ps-borderLight dark:border-ps-borderDark mt-4 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-ps-mutedLight dark:text-zinc-400">Infraestructura Crítica</span>
+                        <a href="https://wa.me/51984399078?text=Hola,%20deseo%20informaci%C3%B3n%20sobre%20Ciberseguridad%20y%20Vigilancia" target="_blank" class="text-ps-petrol dark:text-ps-gold hover:underline font-mono text-xs font-semibold uppercase flex items-center gap-1.5 transition-colors">
+                            <span>Solicitar</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= 5. GESTIÓN Y PREVENCIÓN DE CONFLICTOS SOCIALES ================= -->
+    <section class="py-24 bg-ps-surface dark:bg-ps-petrolDark/80 border-b border-ps-borderLight dark:border-ps-borderDark w-full relative overflow-hidden" id="conflictos">
+        <div class="w-full px-5 sm:px-8 lg:px-14">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6" data-aos="fade-right">
+                    <div class="inline-flex items-center gap-2 text-xs uppercase font-mono tracking-[0.25em] text-ps-petrol dark:text-ps-gold font-bold">
+                        <i class="fa-solid fa-handshake-angle text-sm"></i>
+                        <span>Sector Minero &bull; Energético &bull; Turismo</span>
+                    </div>
+
+                    <h2 class="font-mono text-3xl sm:text-5xl font-bold text-ps-dark dark:text-white leading-tight">
+                        Prevención, Gestión y <br/>
+                        <span class="text-ps-petrol dark:text-ps-gold">Solución de Conflictos Sociales</span>
+                    </h2>
+
+                    <p class="text-sm text-ps-mutedLight dark:text-zinc-300 font-light leading-relaxed">
+                        La mayoría de organizaciones actúan de manera reactiva cuando el conflicto ya estalló. En Prospective Security implementamos un enfoque preventivo territorial, identificando indicadores de conflictividad en su etapa de latencia.
+                    </p>
+
+                    <div class="space-y-3.5 pt-2">
+                        <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-white dark:bg-ps-cardDark border border-ps-borderLight dark:border-ps-borderDark shadow-sm">
+                            <i class="fa-solid fa-triangle-exclamation text-ps-gold mt-1 text-sm"></i>
+                            <div>
+                                <h4 class="font-mono text-xs font-bold text-ps-dark dark:text-white uppercase">Detección de Conflictos Latentes</h4>
+                                <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark mt-0.5">Mapeo de actores y demandas insatisfechas en corredores turísticos, mineros e hidrocarburos.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-white dark:bg-ps-cardDark border border-ps-borderLight dark:border-ps-borderDark shadow-sm">
+                            <i class="fa-solid fa-comments text-ps-gold mt-1 text-sm"></i>
+                            <div>
+                                <h4 class="font-mono text-xs font-bold text-ps-dark dark:text-white uppercase">Mecanismos de Diálogo Preventivo</h4>
+                                <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark mt-0.5">Articulación con comunidades campesinas, frentes de defensa, gremios, GOREs y municipalidades.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-white dark:bg-ps-cardDark border border-ps-borderLight dark:border-ps-borderDark shadow-sm">
+                            <i class="fa-solid fa-landmark text-ps-gold mt-1 text-sm"></i>
+                            <div>
+                                <h4 class="font-mono text-xs font-bold text-ps-dark dark:text-white uppercase">Protección de Parques y Sitios Arqueológicos</h4>
+                                <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark mt-0.5">Modelos de seguridad integral y gestión de flujos de visitantes ante crisis (caso Cusco y Machu Picchu).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6" data-aos="fade-left">
+                    <div class="relative rounded-2xl overflow-hidden border-2 border-ps-borderLight dark:border-ps-borderDark shadow-2xl group bg-white dark:bg-ps-cardDark">
+                        <div class="aspect-[4/3] w-full relative overflow-hidden bg-ps-surface dark:bg-ps-cardDark">
+                            <img alt="Mesa Técnica de Diálogo Comunitario" 
+                                 class="w-full h-full object-cover hidden" 
+                                 src="img/conflictos.jpg" 
+                                 onload="this.classList.remove('hidden'); this.nextElementSibling?.classList.add('hidden');" />
+                            <div class="img-editorial"><span>Imagen</span></div>
+                        </div>
+                        <div class="p-5 bg-white dark:bg-ps-dark/95 border-t border-ps-borderLight dark:border-ps-borderDark flex items-center justify-between">
+                            <div>
+                                <span class="font-mono text-xs text-ps-petrol dark:text-ps-gold font-bold uppercase block">Asesoría Concurrente en Relaciones Comunitarias</span>
+                                <span class="text-xs text-ps-mutedLight dark:text-zinc-400">Protegemos la continuidad operativa y la licencia social.</span>
+                            </div>
+                            <i class="fa-solid fa-shield text-xl text-ps-gold shrink-0"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= 6. SERVICIOS DE CONSULTORÍA Y ASESORÍA ================= -->
+    <section class="py-24 bg-white dark:bg-ps-dark border-b border-ps-borderLight dark:border-ps-borderDark w-full" id="consultoria">
+        <div class="w-full px-5 sm:px-8 lg:px-14">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3" data-aos="fade-up">
+                <span class="text-xs uppercase font-mono tracking-[0.3em] text-ps-petrol dark:text-ps-gold font-bold block">
+                    Gobierno Corporativo &amp; Cumplimiento
+                </span>
+                <h2 class="font-mono text-3xl sm:text-5xl font-bold text-ps-dark dark:text-white">
+                    Consultoría &amp; Asesoría
+                </h2>
+                <div class="w-16 h-1 bg-ps-gold mx-auto mt-3"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="tactical-card p-7 rounded-xl space-y-3 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <span class="text-ps-gold font-mono text-xs font-bold tracking-widest block">01 / AUDITORÍAS</span>
+                    <h3 class="font-mono text-lg font-bold text-ps-dark dark:text-white">Auditorías Técnicas de Seguridad</h3>
+                    <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed font-light">
+                        Evaluación exhaustiva de los procesos, barreras físicas y vulnerabilidades en instalaciones fabriles, mineras y gubernamentales.
+                    </p>
+                </div>
+
+                <div class="tactical-card p-7 rounded-xl space-y-3 shadow-sm" data-aos="fade-up" data-aos-delay="150">
+                    <span class="text-ps-gold font-mono text-xs font-bold tracking-widest block">02 / NORMATIVA</span>
+                    <h3 class="font-mono text-lg font-bold text-ps-dark dark:text-white">Cumplimiento Legal &amp; Políticas</h3>
+                    <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed font-light">
+                        Diseño de políticas corporativas de seguridad, adecuación a marcos regulatorios y estándares de protección de datos personales.
+                    </p>
+                </div>
+
+                <div class="tactical-card p-7 rounded-xl space-y-3 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <span class="text-ps-gold font-mono text-xs font-bold tracking-widest block">03 / CONTINUIDAD</span>
+                    <h3 class="font-mono text-lg font-bold text-ps-dark dark:text-white">Gestión de Crisis e Incidentes</h3>
+                    <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed font-light">
+                        Elaboración de manuales de contingencia, comités de crisis y protocolos de respuesta ante accidentes graves o desmanes sociales.
+                    </p>
+                </div>
+
+                <div class="tactical-card p-7 rounded-xl space-y-3 shadow-sm" data-aos="fade-up" data-aos-delay="250">
+                    <span class="text-ps-gold font-mono text-xs font-bold tracking-widest block">04 / CAPACITACIÓN</span>
+                    <h3 class="font-mono text-lg font-bold text-ps-dark dark:text-white">Entrenamiento Táctico de Personal</h3>
+                    <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed font-light">
+                        Instrucción, concienciación y simulacros para equipos internos de seguridad patrimonial y brigadas de emergencia.
+                    </p>
+                </div>
+
+                <div class="tactical-card p-7 rounded-xl space-y-3 shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <span class="text-ps-gold font-mono text-xs font-bold tracking-widest block">05 / CIBERDEFENSA</span>
+                    <h3 class="font-mono text-lg font-bold text-ps-dark dark:text-white">Diseño de Ciberseguridad</h3>
+                    <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed font-light">
+                        Protección de activos intangibles, prevención de fuga de información clasificada y mitigación de ransomware corporativo.
+                    </p>
+                </div>
+
+                <div class="tactical-card p-7 rounded-xl space-y-3 shadow-sm" data-aos="fade-up" data-aos-delay="350">
+                    <span class="text-ps-gold font-mono text-xs font-bold tracking-widest block">06 / INNOVACIÓN</span>
+                    <h3 class="font-mono text-lg font-bold text-ps-dark dark:text-white">Mejora Continua Prospectiva</h3>
+                    <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed font-light">
+                        Monitoreo continuo de coyunturas geopolíticas y delictivas para la actualización dinámica de los planes de defensa corporativa.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= 7. LIDERAZGO & EQUIPO DE ESPECIALISTAS ================= -->
+    <section class="py-24 bg-ps-surface dark:bg-ps-petrolDark/60 border-b border-ps-borderLight dark:border-ps-borderDark w-full" id="especialistas">
+        <div class="w-full px-5 sm:px-8 lg:px-14">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3" data-aos="fade-up">
+                <span class="text-xs uppercase font-mono tracking-[0.3em] text-ps-petrol dark:text-ps-gold font-bold block">
+                    Alto Mando &amp; Experiencia Comprobada
+                </span>
+                <h2 class="font-mono text-3xl sm:text-5xl font-bold text-ps-dark dark:text-white">
+                    Nuestros Especialistas
+                </h2>
+                <p class="text-xs sm:text-sm text-ps-mutedLight dark:text-zinc-300 font-light">
+                    Dirección estratégica a cargo de Oficiales Superiores de la Policía Nacional del Perú en situación de retiro, con grados de Maestría en Gestión Pública e Inteligencia.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- 1. Wilbert I. Leiva Durán -->
+                <div class="tactical-card rounded-2xl overflow-hidden flex flex-col justify-between group shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="aspect-[4/4] w-full relative overflow-hidden bg-ps-surface dark:bg-ps-cardDark">
+                            <img alt="Wilbert I. Leiva Duran" 
+                                 class="w-full h-full object-cover hidden" 
+                                 src="img/leiva.jpg" 
+                                 onload="this.classList.remove('hidden'); this.nextElementSibling?.classList.add('hidden');" />
+                            <div class="img-editorial"><span>Imagen</span></div>
+                            <div class="absolute bottom-3 left-3 bg-white/95 dark:bg-ps-dark/95 border border-ps-borderLight dark:border-ps-gold/50 px-3 py-1 rounded text-[10px] font-mono text-ps-petrol dark:text-ps-gold font-bold">
+                                Gerente General
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <h3 class="font-mono text-lg font-bold text-ps-dark dark:text-white group-hover:text-ps-petrol dark:group-hover:text-ps-gold transition-colors">
+                                Wilbert I. Leiva Durán
+                            </h3>
+                            <span class="text-xs font-mono text-ps-petrol dark:text-ps-gold font-bold block">
+                                Coronel PNP (r) &bull; Mg. Gestión Pública
+                            </span>
+                            <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed font-light pt-2">
+                                Especialista en procesos de prevención y seguridad integral; negociación, gestión preventiva y solución pacífica de conflictos sociales.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-ps-borderLight dark:border-ps-borderDark">
+                        <span class="text-[10px] font-mono text-ps-mutedLight dark:text-zinc-400 uppercase tracking-widest block">Especialidad: Gestión Pública &amp; Crisis</span>
+                    </div>
+                </div>
+
+                <!-- 2. Wilbert T. Callapiña Durand -->
+                <div class="tactical-card rounded-2xl overflow-hidden flex flex-col justify-between group shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="aspect-[4/4] w-full relative overflow-hidden bg-ps-surface dark:bg-ps-cardDark">
+                            <img alt="Wilbert T. Callapiña Durand" 
+                                 class="w-full h-full object-cover hidden" 
+                                 src="img/callapina.jpg" 
+                                 onload="this.classList.remove('hidden'); this.nextElementSibling?.classList.add('hidden');" />
+                            <div class="img-editorial"><span>Imagen</span></div>
+                            <div class="absolute bottom-3 left-3 bg-white/95 dark:bg-ps-dark/95 border border-ps-borderLight dark:border-ps-gold/50 px-3 py-1 rounded text-[10px] font-mono text-ps-petrol dark:text-ps-gold font-bold">
+                                Gerente Comercial
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <h3 class="font-mono text-lg font-bold text-ps-dark dark:text-white group-hover:text-ps-petrol dark:group-hover:text-ps-gold transition-colors">
+                                Wilbert T. Callapiña Durand
+                            </h3>
+                            <span class="text-xs font-mono text-ps-petrol dark:text-ps-gold font-bold block">
+                                Coronel PNP (r) &bull; Mg. Inteligencia
+                            </span>
+                            <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed font-light pt-2">
+                                Especialista en inteligencia estratégica y operacional, investigación criminalística avanzada y aplicaciones tecnológicas contra el crimen organizado.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-ps-borderLight dark:border-ps-borderDark">
+                        <span class="text-[10px] font-mono text-ps-mutedLight dark:text-zinc-400 uppercase tracking-widest block">Especialidad: Inteligencia &amp; Tecnología</span>
+                    </div>
+                </div>
+
+                <!-- 3. César Zapata del Castillo -->
+                <div class="tactical-card rounded-2xl overflow-hidden flex flex-col justify-between group shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <div class="aspect-[4/4] w-full relative overflow-hidden bg-ps-surface dark:bg-ps-cardDark">
+                            <img alt="Cesar Zapata del Castillo" 
+                                 class="w-full h-full object-cover hidden" 
+                                 src="img/zapata.jpg" 
+                                 onload="this.classList.remove('hidden'); this.nextElementSibling?.classList.add('hidden');" />
+                            <div class="img-editorial"><span>Imagen</span></div>
+                            <div class="absolute bottom-3 left-3 bg-white/95 dark:bg-ps-dark/95 border border-ps-borderLight dark:border-ps-gold/50 px-3 py-1 rounded text-[10px] font-mono text-ps-petrol dark:text-ps-gold font-bold">
+                                Especialista Legal &amp; Operativo
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <h3 class="font-mono text-lg font-bold text-ps-dark dark:text-white group-hover:text-ps-petrol dark:group-hover:text-ps-gold transition-colors">
+                                César Zapata del Castillo
+                            </h3>
+                            <span class="text-xs font-mono text-ps-petrol dark:text-ps-gold font-bold block">
+                                Coronel PNP (r) &bull; Mg. Seguridad Pública
+                            </span>
+                            <p class="text-xs text-ps-mutedLight dark:text-ps-mutedDark leading-relaxed font-light pt-2">
+                                Analista operacional y estratégico, experto en mantenimiento del orden público, seguridad ciudadana y blindaje normativo-penal de operaciones.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-ps-borderLight dark:border-ps-borderDark">
+                        <span class="text-[10px] font-mono text-ps-mutedLight dark:text-zinc-400 uppercase tracking-widest block">Especialidad: Orden Público &amp; Marco Legal</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= 8. CONTACTO & SEDE CUSCO ================= -->
+    <section class="py-24 bg-white dark:bg-ps-dark w-full" id="contacto">
+        <div class="w-full px-5 sm:px-8 lg:px-14">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+                
+                <div class="lg:col-span-5 bg-ps-surface dark:bg-ps-cardDark border border-ps-borderLight dark:border-ps-borderDark rounded-2xl p-8 sm:p-10 flex flex-col justify-between shadow-sm dark:shadow-2xl" data-aos="fade-right">
+                    <div>
+                        <div class="inline-flex items-center gap-2 text-xs uppercase font-mono tracking-widest text-ps-petrol dark:text-ps-gold font-bold mb-3">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Sede Central &bull; Cusco</span>
+                        </div>
+
+                        <h2 class="font-mono text-3xl sm:text-4xl font-bold text-ps-dark dark:text-white uppercase">
+                            Canales Directos
+                        </h2>
+
+                        <p class="text-xs sm:text-sm text-ps-mutedLight dark:text-ps-mutedDark mt-2 leading-relaxed">
+                            Atención ejecutiva para corporaciones mineras, hidrocarburos, gremios de turismo y entidades públicas de los tres niveles de gobierno.
+                        </p>
+
+                        <div class="space-y-4 mt-8 text-xs font-sans">
+                            <div class="flex items-start gap-4">
+                                <div class="w-9 h-9 rounded-lg bg-white dark:bg-ps-petrol border border-ps-borderLight dark:border-ps-gold/40 flex items-center justify-center text-ps-petrol dark:text-ps-gold shrink-0 mt-0.5 shadow-sm">
+                                    <i class="fa-solid fa-building text-sm"></i>
+                                </div>
+                                <div>
+                                    <strong class="font-mono text-ps-dark dark:text-white block uppercase tracking-wider text-[11px]">Razón Social:</strong>
+                                    <span class="text-ps-mutedLight dark:text-zinc-300">Prospective Security &amp; Consultor S.A.C.</span>
+                                    <span class="block text-ps-petrol dark:text-ps-gold font-mono mt-0.5 font-bold">RUC: 20613686518</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-9 h-9 rounded-lg bg-white dark:bg-ps-petrol border border-ps-borderLight dark:border-ps-gold/40 flex items-center justify-center text-ps-petrol dark:text-ps-gold shrink-0 mt-0.5 shadow-sm">
+                                    <i class="fa-solid fa-map-location-dot text-sm"></i>
+                                </div>
+                                <div>
+                                    <strong class="font-mono text-ps-dark dark:text-white block uppercase tracking-wider text-[11px]">Dirección:</strong>
+                                    <span class="text-ps-mutedLight dark:text-zinc-300">Av. Camino Real 108, Cusco, Perú</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-9 h-9 rounded-lg bg-white dark:bg-ps-petrol border border-ps-borderLight dark:border-ps-gold/40 flex items-center justify-center text-ps-petrol dark:text-ps-gold shrink-0 mt-0.5 shadow-sm">
+                                    <i class="fa-solid fa-phone text-sm"></i>
+                                </div>
+                                <div>
+                                    <strong class="font-mono text-ps-dark dark:text-white block uppercase tracking-wider text-[11px]">Central Telefónica:</strong>
+                                    <span class="text-ps-mutedLight dark:text-zinc-300 font-bold">+51 984 399 078 / +51 993 547 757</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-9 h-9 rounded-lg bg-white dark:bg-ps-petrol border border-ps-borderLight dark:border-ps-gold/40 flex items-center justify-center text-ps-petrol dark:text-ps-gold shrink-0 mt-0.5 shadow-sm">
+                                    <i class="fa-solid fa-envelope text-sm"></i>
+                                </div>
+                                <div>
+                                    <strong class="font-mono text-ps-dark dark:text-white block uppercase tracking-wider text-[11px]">Correo Institucional:</strong>
+                                    <span class="text-ps-mutedLight dark:text-zinc-300">prospectiveconsultor@gmail.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-ps-borderLight dark:border-ps-borderDark">
+                        <a href="https://wa.me/51984399078?text=Estimado%20Coronel%20Leiva,%20solicito%20una%20reuni%C3%B3n%20para%20presentaci%C3%B3n%20de%20propuesta" 
+                           target="_blank" 
+                           class="btn-gold w-full py-4 rounded-lg text-xs uppercase tracking-wider text-center block">
+                            <i class="fa-brands fa-whatsapp text-sm mr-1.5"></i>
+                            <span>Iniciar Diálogo por WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 rounded-2xl overflow-hidden border border-ps-borderLight dark:border-ps-borderDark relative min-h-[420px] shadow-sm dark:shadow-2xl bg-ps-surface dark:bg-ps-petrolDark" data-aos="fade-left">
+                    <iframe 
+                        title="Ubicación Prospective Security Cusco"
+                        src="https://www.google.com/maps?q=Av.+Camino+Real+108,+Cusco,+Peru&output=embed" 
+                        class="w-full h-full min-h-[420px] border-0 filter dark:invert-[90%] dark:hue-rotate-180 contrast-105" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= 9. FOOTER ================= -->
+    <footer class="bg-white dark:bg-black text-ps-mutedLight dark:text-zinc-400 text-xs w-full border-t border-ps-borderLight dark:border-ps-borderDark">
+        <div class="w-full px-5 sm:px-8 lg:px-14 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center justify-between">
+                
+                <div class="md:col-span-6 space-y-4">
+                    <a href="#inicio" class="inline-flex items-center group">
+                        <div class="relative h-11 sm:h-14 w-auto flex items-center">
+                            <img alt="Prospective Security Consultores" 
+                                 src="img/logo.png" 
+                                 class="h-full w-auto object-contain max-h-11 sm:max-h-14 transition-transform duration-300 group-hover:scale-[1.02] hidden" 
+                                 onload="this.classList.remove('hidden'); this.nextElementSibling?.classList.add('hidden');" />
+
+                            <div class="h-11 sm:h-14 px-4 border border-dashed border-ps-petrol dark:border-ps-gold/50 rounded flex items-center justify-center text-ps-petrol dark:text-ps-gold font-mono text-xs uppercase tracking-wider bg-ps-petrolSoft dark:bg-transparent">
+                                [ Poner Logo Aquí ]
+                            </div>
+                        </div>
+                    </a>
+
+                    <p class="font-light text-xs max-w-md leading-relaxed text-ps-mutedLight dark:text-zinc-400">
+                        Especialistas consultores y asesores en prospectiva técnica de los procesos de seguridad integral, prevención, gestión y solución de conflictos sociales, criminalidad organizada y ciberseguridad.
+                    </p>
+                </div>
+
+                <div class="md:col-span-3 space-y-2">
+                    <span class="text-[10px] uppercase font-mono font-bold tracking-widest text-ps-petrol dark:text-ps-gold block">Líneas de Servicio</span>
+                    <ul class="space-y-1.5 text-xs font-light text-ps-dark dark:text-zinc-300">
+                        <li>Prospectiva &amp; Escenarios</li>
+                        <li>Protección de Ejecutivos V.I.P.</li>
+                        <li>Prevención de Conflictos Mineros</li>
+                        <li>Auditorías Técnicas &amp; Ciberdefensa</li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-3 space-y-3">
+                    <span class="text-[10px] uppercase font-mono font-bold tracking-widest text-ps-petrol dark:text-ps-gold block">Contacto Corporativo</span>
+                    <p class="text-xs text-ps-dark dark:text-zinc-300 leading-snug">
+                        Av. Camino Real 108, Cusco <br/>
+                        RUC: 20613686518 <br/>
+                        prospectiveconsultor@gmail.com
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a class="w-9 h-9 rounded-lg bg-ps-petrolSoft dark:bg-ps-cardDark border border-ps-borderLight dark:border-ps-borderDark flex items-center justify-center text-ps-petrol dark:text-ps-gold hover:border-ps-gold transition-colors" href="https://wa.me/51984399078" target="_blank" title="WhatsApp">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                        </a>
+                        <a class="w-9 h-9 rounded-lg bg-ps-petrolSoft dark:bg-ps-cardDark border border-ps-borderLight dark:border-ps-borderDark flex items-center justify-center text-ps-petrol dark:text-ps-gold hover:border-ps-gold transition-colors" href="mailto:prospectiveconsultor@gmail.com" title="Correo">
+                            <i class="fa-solid fa-envelope text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-12 pt-6 border-t border-slate-200 dark:border-zinc-800 text-center text-ps-mutedLight dark:text-zinc-500 text-[11px] font-mono">
+                <p>&copy; 2026 Prospective Security &amp; Consultor S.A.C. RUC: 20613686518. Todos los derechos reservados. Cusco, Perú.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante Estratégico WhatsApp -->
+    <aside class="fixed bottom-6 right-6 z-50">
+        <a class="flex items-center gap-2.5 bg-ps-petrol hover:bg-ps-petrolLight border border-ps-gold text-white font-mono text-xs uppercase tracking-wider py-3.5 px-5 rounded-xl shadow-2xl transition-all duration-300 hover:scale-105" 
+           href="https://wa.me/51984399078?text=Estimados%20Prospective%20Security,%20requiero%20asesor%C3%ADa%20inmediata" target="_blank">
+            <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
+            <span class="hidden sm:inline font-bold">Línea Táctica: 984 399 078</span>
+        </a>
+    </aside>
+
+<!-- Scripts de Interacción, AOS, Toggle de Tema & Galería Gestual Táctil Optimizada -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicialización de animaciones AOS
+            AOS.init({
+                duration: 750,
+                once: true,
+                easing: 'ease-out-cubic',
+                offset: 50
+            });
+
+            // Navbar dinámico al hacer scroll
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 30) {
+                    header.classList.add('nav-scrolled');
+                } else {
+                    header.classList.remove('nav-scrolled');
+                }
+            });
+
+            // Menú Móvil Desplegable
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => navMenu.classList.toggle('hidden'));
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => navMenu.classList.add('hidden'));
+                });
+            }
+
+            // Lógica del botón de cambio Claro / Oscuro con persistencia
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const darkIcon = document.getElementById('theme-toggle-dark-icon');
+            const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+            function updateThemeIcons() {
+                if (document.documentElement.classList.contains('dark')) {
+                    darkIcon.classList.add('hidden');
+                    lightIcon.classList.remove('hidden');
+                } else {
+                    lightIcon.classList.add('hidden');
+                    darkIcon.classList.remove('hidden');
+                }
+            }
+
+            if (themeToggleBtn) {
+                updateThemeIcons();
+
+                themeToggleBtn.addEventListener('click', () => {
+                    if (document.documentElement.classList.contains('dark')) {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                    updateThemeIcons();
+                });
+            }
+
+            // ================= GALERÍA HERO INTERACTIVA (SLIDER, SWIPE MÓVIL & DRAG PC) =================
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.hero-dot');
+            const totalSlides = slides.length;
+            let slideInterval;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    const img = slide.querySelector('img');
+                    if (i === index) {
+                        slide.classList.remove('opacity-0');
+                        slide.classList.add('opacity-100');
+                        if (img) img.classList.add('scale-105');
+                    } else {
+                        slide.classList.remove('opacity-100');
+                        slide.classList.add('opacity-0');
+                        if (img) img.classList.remove('scale-105');
+                    }
+                });
+
+                dots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.remove('w-2', 'bg-slate-300', 'dark:bg-white/20');
+                        dot.classList.add('w-6', 'bg-ps-petrol', 'dark:bg-ps-gold');
+                    } else {
+                        dot.classList.remove('w-6', 'bg-ps-petrol', 'dark:bg-ps-gold');
+                        dot.classList.add('w-2', 'bg-slate-300', 'dark:bg-white/20');
+                    }
+                });
+
+                currentSlide = index;
+            }
+
+            function nextHeroSlide() {
+                showSlide((currentSlide + 1) % totalSlides);
+            }
+
+            function prevHeroSlide() {
+                showSlide((currentSlide - 1 + totalSlides) % totalSlides);
+            }
+
+            window.goToHeroSlide = function(index) {
+                showSlide(index);
+                resetSlideTimer();
+            };
+
+            function startSlideTimer() {
+                slideInterval = setInterval(nextHeroSlide, 6000);
+            }
+
+            function resetSlideTimer() {
+                clearInterval(slideInterval);
+                startSlideTimer();
+            }
+
+            const nextBtn = document.getElementById('hero-next');
+            const prevBtn = document.getElementById('hero-prev');
+            if (nextBtn && prevBtn) {
+                nextBtn.addEventListener('click', () => { nextHeroSlide(); resetSlideTimer(); });
+                prevBtn.addEventListener('click', () => { prevHeroSlide(); resetSlideTimer(); });
+            }
+
+            // CONTROL GESTUAL EN TODA LA SECCIÓN #inicio (FUNCIONA SOBRE EL TEXTO Y LA IMAGEN)
+            const heroSection = document.getElementById('inicio');
+            if (heroSection) {
+                let startX = 0;
+                let startY = 0;
+                let isDragging = false;
+
+                // 1. Eventos Táctiles para Celulares y Tablets
+                heroSection.addEventListener('touchstart', (e) => {
+                    if (e.touches.length > 0) {
+                        startX = e.touches[0].clientX;
+                        startY = e.touches[0].clientY;
+                    }
+                }, { passive: true });
+
+                heroSection.addEventListener('touchend', (e) => {
+                    if (e.changedTouches.length > 0) {
+                        const endX = e.changedTouches[0].clientX;
+                        const endY = e.changedTouches[0].clientY;
+                        handleGesture(startX, startY, endX, endY);
+                    }
+                }, { passive: true });
+
+                // 2. Eventos de Ratón para PC
+                heroSection.addEventListener('mousedown', (e) => {
+                    // Evitar iniciar arrastre si se hace clic sobre un botón o enlace
+                    if (e.target.closest('a, button')) return;
+                    isDragging = true;
+                    startX = e.clientX;
+                    startY = e.clientY;
+                });
+
+                window.addEventListener('mouseup', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    handleGesture(startX, startY, e.clientX, e.clientY);
+                });
+
+                function handleGesture(x1, y1, x2, y2) {
+                    const diffX = x2 - x1;
+                    const diffY = y2 - y1;
+
+                    // Si el deslizamiento horizontal supera los 35px y es mayor que el movimiento vertical
+                    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 35) {
+                        if (diffX < 0) {
+                            nextHeroSlide(); // Deslizar hacia la izquierda -> Siguiente foto
+                        } else {
+                            prevHeroSlide(); // Deslizar hacia la derecha -> Foto anterior
+                        }
+                        resetSlideTimer();
+                    }
+                }
+            }
+
+            if (totalSlides > 0) {
+                showSlide(0);
+                startSlideTimer();
+            }
+        });
+    </script>
+</body>
+</html>
